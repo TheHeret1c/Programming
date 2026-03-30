@@ -29,7 +29,7 @@ int main() {
 
     for (int i = 0; i < ROWS; i++) {
         for (int j = 0; j < COLS; j++) {
-            printf("%3.1lf  ", matrix[i][j]);
+            printf("%5.1lf  ", matrix[i][j]);
         }
         printf("\n");
     }
