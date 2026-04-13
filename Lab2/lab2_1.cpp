@@ -2,23 +2,24 @@
 #include <stdlib.h>
 
 int main(void) {
-    // double *p0 = (double*) malloc(sizeof(double));
-    // double **p1 = (double**) malloc (sizeof(double**));
-    // double ***pointer = NULL;
+    int *pa = (int*) malloc(sizeof(int));
+    int *pb = (int*) malloc(sizeof(int));
 
-    double n = 2;
-    double *p0 = (double*) malloc(sizeof(double));
-    p0 = &n;
-    double **p1 = (double**) malloc(sizeof(double*));
-    **p1 = *p0;
-    double ***pointer = NULL;
-    ***pointer = **p1;
-    
-    printf("%lf, %p", ***pointer, pointer);
+    if (!pa || !pb) {
+        printf("Memory allocation failed");
+        return 1;
+    }
 
-    free(p0);
-    free(p1);
-    free(pointer);
+    printf("Enter a number: ");
+    scanf("%d", pa);
+
+    printf("Enter b number: ");
+    scanf("%d", pb);
+
+    printf("Sum a+b = %d", *pa + *pb);
+
+    free(pa);
+    free(pb);
 
     return 0;
 }

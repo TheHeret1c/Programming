@@ -1,33 +1,32 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
 
 int main(void) {
-    int *a = (int*) malloc(sizeof(int));
-    int *b = (int*) malloc(sizeof(int));
+    int *pa = (int*) malloc(sizeof(int));
+    int *pb = (int*) malloc(sizeof(int));
 
-    if (a == NULL || b == NULL) {
-        printf("Memory allocation failed");
+    if (!pa || !pb) {
+        perror("Memory allocation failed");
         return 1;
     }
 
+    int max;
+
     printf("Enter a number: ");
-    scanf("%d", a);
-
+    scanf("%d", pa);
     printf("Enter b number: ");
-    scanf("%d", b);
+    scanf("%d", pb);
 
-    if (*a > *b) {
-        printf("Max = %d\n", *a);
-    } else {
-        printf("Max = %d\n", *b);
+    if (*pa > *pb) {
+        max = *pa;
+    }
+    else {
+        max = *pb;
     }
 
-    double max = fmax((double) *a, (double) *b);
-    printf("Max = %.0lf", max);
+    printf("Max: %d", max);
 
-    free(a);
-    free(b);
-
+    free(pa);
+    free(pb);
     return 0;
 }

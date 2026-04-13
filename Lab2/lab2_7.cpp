@@ -11,14 +11,14 @@ int main() {
 
     int **dyn_matrix = (int**) malloc(rows * sizeof(int*));
 
-    if (dyn_matrix == NULL) {
+    if (!dyn_matrix) {
         printf("Memory allocation failed!");
         return 1;
     }
 
     for (int i = 0; i < rows; i++) {
         dyn_matrix[i] = (int*) malloc(cols * sizeof(int));
-        if (dyn_matrix[i] == NULL) {
+        if (!dyn_matrix[i]) {
             printf("Memory allocation failed!");
             for (int k = 0; k < i; k++) {
                 free(dyn_matrix[k]);

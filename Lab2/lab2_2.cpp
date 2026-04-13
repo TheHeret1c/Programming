@@ -2,24 +2,29 @@
 #include <stdlib.h>
 
 int main(void) {
-    int *a = (int*) malloc(sizeof(int));
-    int *b = (int*) malloc(sizeof(int));
+    int *pa = (int*) malloc(sizeof(int));
+    int *pb = (int*) malloc(sizeof(int));
 
-    if (a == NULL || b == NULL) {
-        printf("Memory allocation failed");
+    if (!pa || !pb) {
+        perror("Memory allocation failed!");
         return 1;
     }
 
     printf("Enter a number: ");
-    scanf("%d", a);
-
+    scanf("%d", pa);
     printf("Enter b number: ");
-    scanf("%d", b);
+    scanf("%d", pb);
 
-    printf("Sum a+b = %d", *a + *b);
+    printf("Before swap. Number a: %d, number b: %d\n", *pa, *pb);
+    
+    int temp = *pa;
+    *pa = *pb;
+    *pb = temp;
 
-    free(a);
-    free(b);
+    printf("After swap. Number a: %d, number b: %d", *pa, *pb);
 
+    free(pa);
+    free(pb);
+    
     return 0;
 }

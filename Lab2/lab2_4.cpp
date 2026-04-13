@@ -3,28 +3,32 @@
 
 int main(void) {
     int array_size;
-    
-    printf("Enter a size of array: ");
+    int sum = 0;
+
+    printf("Enter a size of array (1 <= n <= 1000): ");
     scanf("%d", &array_size);
 
-    double *array = (double*) malloc(array_size * sizeof(double));
+    if (array_size < 1 || array_size > 1000) {
+        printf("Incorrect array size!");
+        return 1;
+    }
 
-    if (array == NULL) {
-        printf("Memory allocation failed!");
+    int *array = (int*) malloc(array_size * sizeof(int));
+
+    if (!array) {
+        perror("Memory allocation failed!");
         return 1;
     }
 
     for (int i = 0; i < array_size; i++) {
-        printf("Enter %d number: ", i + 1);
-        scanf("%lf", array + i);
+        printf("Enter element #%d: ", i + 1);
+        scanf("%d", array + i);
+        sum += *(array + i);
     }
 
-    printf("Elements of array: ");
-    for (int i = 0; i < array_size; i++) {
-        printf("%.2lf ", *(array + i));
-    }
+    printf("Sum elements: %d", sum);
 
     free(array);
-
+    
     return 0;
 }

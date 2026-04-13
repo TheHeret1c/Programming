@@ -3,12 +3,12 @@
 
 int main(void) {
     int a = 1234567890;
-    char *p;
+    unsigned char *p;
 
-    p = (char*) &a;
+    p = (unsigned char*) &a;
 
     for (int i = 0; i < sizeof(a); i++) {
-        printf("%x ", (unsigned char)*(p + i));
+        printf("%u ", *(p + i));
     }
 
     return 0;
